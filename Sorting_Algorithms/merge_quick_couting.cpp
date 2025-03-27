@@ -20,18 +20,18 @@ class ArraySorting {
     }
 
     int lomutoPartition(int low, int high){
-        int pivot = array[high];
-        int small = low - 1;
+        int pivot = array[low];
+        int index = low + 1;
 
-        for(int i = low; i < high; i++){
-            if(array[i] <= pivot){
-                small++;
-                swap(array[small], array[i]);
+        for(int i = index; i <= high; i++){
+            if(array[i] < pivot){
+                swap(array[i], array[index]);
+                ++index;
             }
         }
 
-        swap(array[small+1], array[high]);
-        return small + 1;
+        swap(array[low], array[index-1]);
+        return index - 1;
     }
 
     void quickSort(int low, int high){
